@@ -3,16 +3,12 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, Session
 import os
 
-
-try:
-    engine = create_engine(os.environ["CONNECTION_STRING"])
-except Exception:
-    raise Exception('Please provide a db connection string')
+DB_CONNECTION_STRING = os.environ.get('DB_CONNECTION_STRING', 'postgresql://dekel:dekel@127.0.0.1:5432/dominoscode')
+engine = create_engine(DB_CONNECTION_STRING)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=True, bind=engine)
 
 Base = declarative_base()
-
 
 def get_db():
     database: Session = SessionLocal()
