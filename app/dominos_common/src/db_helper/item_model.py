@@ -1,7 +1,6 @@
-from database import Base
 from sqlalchemy import Column, String, Integer, ForeignKey, Float, Boolean
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-
+from .database import Base
 
 class Item(Base):
     __tablename__ = 'items'

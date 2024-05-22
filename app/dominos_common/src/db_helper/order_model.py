@@ -1,13 +1,10 @@
 
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import ForeignKey, Enum, Column, Integer, Float, ForeignKeyConstraint
+from sqlalchemy import ForeignKey, Enum, Column, Integer, Float
 from typing import List
 from enum import Enum as PyEnum
-from database_models.item import Item
-
-
-
-from database import Base
+from .item_model import Item
+from .database import Base
 
 
 class OrderStatusEnum(PyEnum):

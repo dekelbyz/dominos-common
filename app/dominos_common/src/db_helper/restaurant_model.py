@@ -1,8 +1,7 @@
 from sqlalchemy import Column, String, ForeignKey
 from sqlalchemy.orm import mapped_column
-from database import Base
 from sqlalchemy.orm import Mapped
-
+from .database import Base
 
 class Restaurant(Base):
     ''' db schema '''
