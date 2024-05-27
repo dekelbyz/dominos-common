@@ -13,7 +13,7 @@ class ItemOptionGroup(Base):
     __tablename__ = 'item_option_groups'
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name = Column(String(50), unique=True, nullable=False)
-    item_id = mapped_column(ForeignKey('items.id'), nullable=False)
+    item_id = mapped_column(ForeignKey(Item.id), nullable=False)
     multiple_choice = Column(Boolean(), nullable=False, default=False)
 
 
@@ -22,5 +22,5 @@ class ItemOption(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     name = Column(String(50), unique=True, nullable=False)
     item_option_group_id = mapped_column(
-        ForeignKey('item_option_groups.id'), nullable=False)
+        ForeignKey(ItemOptionGroup.id), nullable=False)
     price = Column(Float(), nullable=False)

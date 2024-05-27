@@ -6,6 +6,10 @@ from enum import Enum as PyEnum
 from .item_model import Item
 from .database import Base
 
+from .user_model import User
+from .restaurant_model import Restaurant
+from .address_model import Address
+from .item_model import Item
 
 class OrderStatusEnum(PyEnum):
     PENDING = 'pending'
@@ -26,18 +30,18 @@ class OrderStatus(Base):
 class Order(Base):
     __tablename__ = 'orders'
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    order_status = mapped_column(ForeignKey('order_status.id'))
+    order_status = mapped_column(ForeignKey(OrderStatus.id))
     items: Mapped[List['OrderItem']] = relationship()
-    branch_id = mapped_column(ForeignKey('restaurants.id'), nullable=False)
-    address_id = mapped_column(ForeignKey('addresses.id'), nullable=False)
-    customer_id = mapped_column(ForeignKey('users.id'), nullable=False)
+    branch_id = mapped_column(ForeignKey(Restaurant.id), nullable=False)
+    address_id = mapped_column(ForeignKey(Address.id), nullable=False)
+    customer_id = mapped_column(ForeignKey(User.id), nullable=False)
     total_price = Column(Float())
 
 
 class OrderItem(Base):
     __tablename__ = 'order_items'
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    item_id = mapped_column(ForeignKey('items.id'), nullable=False)
+    item_id = mapped_column(ForeignKey(Item.id), nullable=False)
     item_details: Mapped[Item] = relationship()
-    order_id = mapped_column(ForeignKey('orders.id'), nullable=False)
+    order_id = mapped_column(ForeignKey(Order.id), nullable=False)
     quantity = Column(Integer(), nullable=False)
