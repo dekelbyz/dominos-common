@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="dominos_common",
-    version="0.0.13",
+    version="0.0.14",
     description="Share utilities and models across the Dominos app",
     package_dir={"": "app"},
     packages=find_packages(where="app"),
@@ -20,7 +20,8 @@ setup(
         "Programming Language :: Python :: 3.10",
         "Operating System :: OS Independent",
     ],
-    install_requires=["bson >= 0.5.10", "SQLAlchemy>=2.0.30", "psycopg2-binary>=2.9.9"],
+    install_requires=["bson >= 0.5.10",
+                      "SQLAlchemy>=2.0.30", "psycopg2-binary>=2.9.9"],
     extras_require={
         "dev": ["pytest>=7.0", "twine>=4.0.2"],
     },
