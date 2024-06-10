@@ -12,13 +12,13 @@ from .address_model import Address
 from .item_model import Item
 
 class OrderStatusEnum(PyEnum):
-    PENDING = 'pending'
-    ACCEPTED = 'accepted'
-    IN_PROGRESS = 'in_progress'
-    READY = 'ready'
-    DELIVERY = 'delivery'
-    COMPLETED = 'completed'
-    CANCELED = 'canceled'
+    PENDING = 1
+    ACCEPTED = 2
+    IN_PROGRESS = 3
+    READY = 4
+    DELIVERY = 5
+    COMPLETED = 6
+    CANCELED = 7
 
 
 class OrderStatus(Base):
