@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="dominos_common",
-    version="0.0.14",
+    version="0.0.16",
     description="Share utilities and models across the Dominos app",
     package_dir={"": "app"},
     packages=find_packages(where="app"),
