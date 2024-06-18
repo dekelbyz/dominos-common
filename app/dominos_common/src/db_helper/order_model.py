@@ -3,13 +3,13 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import ForeignKey, Enum, Column, Integer, Float
 from typing import List
 from enum import Enum as PyEnum
-from .item_model import Item
+from .item_model import Item, ItemOption
 from .database import Base
 
 from .user_model import User
 from .restaurant_model import Restaurant
 from .address_model import Address
-from .item_model import Item
+
 
 class OrderStatusEnum(PyEnum):
     PENDING = 1
@@ -45,3 +45,10 @@ class OrderItem(Base):
     item_details: Mapped[Item] = relationship()
     order_id = mapped_column(ForeignKey(Order.id), nullable=False)
     quantity = Column(Integer(), nullable=False)
+
+
+class OrderItemOption(Base):
+    __tablename__ = 'order_item_options'
+    id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
+    order_item_id = mapped_column(ForeignKey(OrderItem.id), nullable=False)
+    item_option_id = mapped_column(ForeignKey(ItemOption.id), nullable=False)
